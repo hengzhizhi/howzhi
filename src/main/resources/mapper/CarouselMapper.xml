@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zua.howzhi.mapper.CarouselMapper" >
+  <resultMap id="BaseResultMap" type="com.zua.howzhi.model.Carousel" >
+    <result column="course_id" property="courseId" jdbcType="INTEGER" />
+    <result column="photo_url" property="photoUrl" jdbcType="VARCHAR" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="type_id" property="typeId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="view_count" property="viewCount" jdbcType="INTEGER" />
+    <result column="teacher_id" property="teacherId" jdbcType="INTEGER" />
+  </resultMap>
+  <insert id="insert" parameterType="com.zua.howzhi.model.Carousel" >
+    insert into carousel (course_id, photo_url, name, 
+      type_id, create_time, view_count, 
+      teacher_id)
+    values (#{courseId,jdbcType=INTEGER}, #{photoUrl,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{typeId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{viewCount,jdbcType=INTEGER}, 
+      #{teacherId,jdbcType=INTEGER})
+  </insert>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select course_id, photo_url, name, type_id, create_time, view_count, teacher_id
+    from carousel
+  </select>
+</mapper>

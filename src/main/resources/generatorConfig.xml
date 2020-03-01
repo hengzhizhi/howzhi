@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+
+    <!--指定特定数据库的jdbc驱动jar包的位置 -->
+    <classPathEntry location="F:\howzhi\src\main\resources\lib\mysql-connector-java-5.1.1.jar"/>
+    <context id ="generate" targetRuntime ="MyBatis3Simple">
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <!--suppressAllComments 设置为true 则不再生成注释-->
+        <commentGenerator>
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+
+        <!--jdbc的数据库连接   -->
+        <jdbcConnection
+                driverClass="com.mysql.jdbc.Driver"
+                connectionURL="jdbc:mysql://127.0.0.1:3306/howzhi"
+                userId="root"
+                password="root">
+        </jdbcConnection>
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+        <!-- 指定生成模型包文件位置 -->
+        <javaModelGenerator targetPackage="com.zua.howzhi.model"
+                            targetProject="src/main/java">
+        </javaModelGenerator>
+
+        <!--指定mapper.xml映射文件位置 -->
+        <sqlMapGenerator targetPackage="mapper"
+                         targetProject="src/main/resources">
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+
+
+        <!--指定生成mapper接口位置-->
+        <javaClientGenerator targetPackage="com.zua.howzhi.mapper"
+                             targetProject="src/main/java" type="XMLMAPPER">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!--指定表-->
+        <table tableName="%">
+        </table>
+    </context>
+</generatorConfiguration>

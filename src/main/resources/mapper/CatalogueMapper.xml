@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zua.howzhi.mapper.CatalogueMapper" >
+  <resultMap id="BaseResultMap" type="com.zua.howzhi.model.Catalogue" >
+    <id column="catalogue_id" property="catalogueId" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="video_url" property="videoUrl" jdbcType="VARCHAR" />
+    <result column="course_id" property="courseId" jdbcType="INTEGER" />
+    <result column="grade_id" property="gradeId" jdbcType="INTEGER" />
+    <result column="parent_id" property="parentId" jdbcType="INTEGER" />
+    <result column="status" property="status" jdbcType="INTEGER" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from catalogue
+    where catalogue_id = #{catalogueId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zua.howzhi.model.Catalogue" >
+    insert into catalogue (catalogue_id, name, video_url, 
+      course_id, grade_id, parent_id, 
+      status)
+    values (#{catalogueId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{videoUrl,jdbcType=VARCHAR}, 
+      #{courseId,jdbcType=INTEGER}, #{gradeId,jdbcType=INTEGER}, #{parentId,jdbcType=INTEGER}, 
+      #{status,jdbcType=INTEGER})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.zua.howzhi.model.Catalogue" >
+    update catalogue
+    set name = #{name,jdbcType=VARCHAR},
+      video_url = #{videoUrl,jdbcType=VARCHAR},
+      course_id = #{courseId,jdbcType=INTEGER},
+      grade_id = #{gradeId,jdbcType=INTEGER},
+      parent_id = #{parentId,jdbcType=INTEGER},
+      status = #{status,jdbcType=INTEGER}
+    where catalogue_id = #{catalogueId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select catalogue_id, name, video_url, course_id, grade_id, parent_id, status
+    from catalogue
+    where catalogue_id = #{catalogueId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select catalogue_id, name, video_url, course_id, grade_id, parent_id, status
+    from catalogue
+  </select>
+</mapper>
