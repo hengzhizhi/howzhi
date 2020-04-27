@@ -5,7 +5,7 @@
     <id column="course_id" property="courseId" jdbcType="INTEGER" />
     <result column="name" property="name" jdbcType="VARCHAR" />
     <result column="type_id" property="typeId" jdbcType="INTEGER" />
-    <result column="photo_url" property="photoUrl" jdbcType="INTEGER" />
+    <result column="photo_url" property="photoUrl" jdbcType="VARCHAR" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="view_count" property="viewCount" jdbcType="INTEGER" />
     <result column="teacher_id" property="teacherId" jdbcType="INTEGER" />
@@ -20,14 +20,14 @@
       photo_url, create_time, view_count, 
       teacher_id, status)
     values (#{courseId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{typeId,jdbcType=INTEGER}, 
-      #{photoUrl,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{viewCount,jdbcType=INTEGER}, 
+      #{photoUrl,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{viewCount,jdbcType=INTEGER},
       #{teacherId,jdbcType=INTEGER}, #{status,jdbcType=INTEGER})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.zua.howzhi.model.Course" >
     update course
     set name = #{name,jdbcType=VARCHAR},
       type_id = #{typeId,jdbcType=INTEGER},
-      photo_url = #{photoUrl,jdbcType=INTEGER},
+      photo_url = #{photoUrl,jdbcType=VARCHAR},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       view_count = #{viewCount,jdbcType=INTEGER},
       teacher_id = #{teacherId,jdbcType=INTEGER},

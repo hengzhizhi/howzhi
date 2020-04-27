@@ -41,4 +41,10 @@
     select catalogue_id, name, video_url, course_id, grade_id, parent_id, status
     from catalogue
   </select>
+
+  <select id="selectByCourse" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select catalogue_id, name, video_url, course_id, grade_id, parent_id, status
+    from catalogue
+    where course_id = #{courseId,jdbcType=INTEGER}
+  </select>
 </mapper>

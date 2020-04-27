@@ -1,8 +1,13 @@
 package com.zua.howzhi.mapper;
 
 import com.zua.howzhi.model.Catalogue;
-import java.util.List;
+import org.apache.ibatis.annotations.Mapper;
+import org.springframework.stereotype.Component;
 
+import java.util.List;
+//目录
+@Component
+@Mapper
 public interface CatalogueMapper {
     int deleteByPrimaryKey(Integer catalogueId);
 
@@ -13,4 +18,6 @@ public interface CatalogueMapper {
     List<Catalogue> selectAll();
 
     int updateByPrimaryKey(Catalogue record);
+
+    List<Catalogue> selectByCourse(Integer courseId);
 }

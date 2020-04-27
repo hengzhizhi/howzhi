@@ -1,68 +1,58 @@
 package com.zua.howzhi.model;
 
+import java.util.Date;
+
 public class User {
-    private Integer userId;
+    private Integer id;
 
-    private String name;
+    private String realname;
 
-    private Boolean gender;
-
-    private String photoUrl;
-
-    private String email;
-
-    private String phone;
+    private String username;
 
     private String password;
 
+    private Boolean gender;
+
+    private String header;
+
+    private String mobile;
+
+    private Boolean status;
+
+    private Date birthday;
+
+    private String title;
+
     private String sign;
 
-    public Integer getUserId() {
-        return userId;
+    private String qq;
+
+    private Date loginTime;
+
+    private Date createTime;
+
+    public Integer getId() {
+        return id;
     }
 
-    public void setUserId(Integer userId) {
-        this.userId = userId;
+    public void setId(Integer id) {
+        this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getRealname() {
+        return realname;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setRealname(String realname) {
+        this.realname = realname;
     }
 
-    public Boolean getGender() {
-        return gender;
+    public String getUsername() {
+        return username;
     }
 
-    public void setGender(Boolean gender) {
-        this.gender = gender;
-    }
-
-    public String getPhotoUrl() {
-        return photoUrl;
-    }
-
-    public void setPhotoUrl(String photoUrl) {
-        this.photoUrl = photoUrl;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPhone() {
-        return phone;
-    }
-
-    public void setPhone(String phone) {
-        this.phone = phone;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -73,11 +63,83 @@ public class User {
         this.password = password;
     }
 
+    public Boolean getGender() {
+        return gender;
+    }
+
+    public void setGender(Boolean gender) {
+        this.gender = gender;
+    }
+
+    public String getHeader() {
+        return header;
+    }
+
+    public void setHeader(String header) {
+        this.header = header;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
+
+    public void setStatus(Boolean status) {
+        this.status = status;
+    }
+
+    public Date getBirthday() {
+        return birthday;
+    }
+
+    public void setBirthday(Date birthday) {
+        this.birthday = birthday;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
     public String getSign() {
         return sign;
     }
 
     public void setSign(String sign) {
         this.sign = sign;
+    }
+
+    public String getQq() {
+        return qq;
+    }
+
+    public void setQq(String qq) {
+        this.qq = qq;
+    }
+
+    public Date getLoginTime() {
+        return loginTime;
+    }
+
+    public void setLoginTime(Date loginTime) {
+        this.loginTime = loginTime;
+    }
+
+    public Date getCreateTime() {
+        return createTime;
+    }
+
+    public void setCreateTime(Date createTime) {
+        this.createTime = createTime;
     }
 }

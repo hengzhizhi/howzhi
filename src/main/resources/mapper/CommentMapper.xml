@@ -39,4 +39,10 @@
     select comment_id, user_id, course_id, date, parent_id, content
     from comment
   </select>
+
+  <select id="selectByCourse" resultMap="BaseResultMap" >
+    select comment_id, user_id, course_id, date, parent_id, content
+    from comment
+    where course_id = #{courseId,jdbcType=INTEGER}
+  </select>
 </mapper>

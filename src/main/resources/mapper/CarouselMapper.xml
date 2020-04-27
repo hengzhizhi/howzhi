@@ -18,6 +18,10 @@
       #{typeId,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{viewCount,jdbcType=INTEGER}, 
       #{teacherId,jdbcType=INTEGER})
   </insert>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from carousel
+    where course_id = #{course_id,jdbcType=INTEGER}
+  </delete>
   <select id="selectAll" resultMap="BaseResultMap" >
     select course_id, photo_url, name, type_id, create_time, view_count, teacher_id
     from carousel

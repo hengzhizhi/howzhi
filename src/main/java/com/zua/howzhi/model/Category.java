@@ -5,6 +5,8 @@ public class Category {
 
     private String name;
 
+    private String PhotoUrl;
+
     public Integer getCategoryId() {
         return categoryId;
     }
@@ -20,4 +22,8 @@ public class Category {
     public void setName(String name) {
         this.name = name;
     }
+
+    public String getPhotoUrl() { return PhotoUrl; }
+
+    public void setPhotoUrl(String photoUrl) { this.PhotoUrl = photoUrl; }
 }

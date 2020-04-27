@@ -9,7 +9,7 @@ public class Course {
 
     private Integer typeId;
 
-    private Integer photoUrl;
+    private String photoUrl;
 
     private Date createTime;
 
@@ -43,11 +43,11 @@ public class Course {
         this.typeId = typeId;
     }
 
-    public Integer getPhotoUrl() {
+    public String getPhotoUrl() {
         return photoUrl;
     }
 
-    public void setPhotoUrl(Integer photoUrl) {
+    public void setPhotoUrl(String photoUrl) {
         this.photoUrl = photoUrl;
     }
 
