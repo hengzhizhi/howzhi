@@ -11,6 +11,12 @@ public class Teacher {
 
     private String photoUrl;
 
+    private String username;
+
+    private String name;
+
+    private String password;
+
     public Integer getTeacherId() {
         return teacherId;
     }
@@ -41,5 +47,29 @@ public class Teacher {
 
     public void setPhotoUrl(String photoUrl) {
         this.photoUrl = photoUrl;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 }

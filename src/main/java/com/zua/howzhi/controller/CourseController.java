@@ -1,11 +1,7 @@
 package com.zua.howzhi.controller;
 
-import com.zua.howzhi.model.Catalogue;
-import com.zua.howzhi.model.Category;
-import com.zua.howzhi.model.Course;
-import com.zua.howzhi.service.CatalogueService;
-import com.zua.howzhi.service.CategoryService;
-import com.zua.howzhi.service.CourseService;
+import com.zua.howzhi.model.*;
+import com.zua.howzhi.service.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -28,6 +24,11 @@ public class CourseController {
 
     @Autowired
     private CatalogueService catalogueService;
+
+    @Autowired
+    private TeacherService teacherService;
+    @Autowired
+    private NoticeService noticeService;
 
     //查询全部课程
     @CrossOrigin
@@ -61,6 +62,23 @@ public class CourseController {
     @RequestMapping("/selectChapter")
     public List<Catalogue> selectChapter(@RequestParam Integer courseId) {
         return catalogueService.selectByCourse(courseId);
+    }
+
+    //根据课程ID查询教师信息
+    @CrossOrigin
+    @ResponseBody
+    @RequestMapping("/queryTeacher")
+    public Teacher queryTeacher(@RequestParam Integer courseId) {
+        Course course = courseService.getById(courseId);
+        return teacherService.selectById(course.getTeacherId());
+    }
+
+    //根据课程查询公告信息
+    @CrossOrigin
+    @ResponseBody
+    @RequestMapping("/selectNotice")
+    public List<Notice> queryNotice(@RequestParam Integer courseId) {
+        return noticeService.selectByCourse(courseId);
     }
 
 }

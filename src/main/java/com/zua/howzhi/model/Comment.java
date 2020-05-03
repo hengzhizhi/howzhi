@@ -15,6 +15,8 @@ public class Comment {
 
     private String content;
 
+    private Integer catalogueId;
+
     public Integer getCommentId() {
         return commentId;
     }
@@ -62,4 +64,12 @@ public class Comment {
     public void setContent(String content) {
         this.content = content;
     }
+    public Integer getCatalogue_id() {
+        return catalogueId;
+    }
+
+    public void setCatalogue_id(Integer catalogueId) {
+        this.catalogueId = catalogueId;
+    }
+
 }

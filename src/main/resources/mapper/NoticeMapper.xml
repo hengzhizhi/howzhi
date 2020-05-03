@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zua.howzhi.mapper.NoticeMapper" >
+  <resultMap id="BaseResultMap" type="com.zua.howzhi.model.Notice" >
+    <id column="notice_id" property="noticeId" jdbcType="INTEGER" />
+    <result column="course_id" property="courseId" jdbcType="INTEGER" />
+    <result column="teacher_id" property="teacherId" jdbcType="INTEGER" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
+    <result column="content" property="content" jdbcType="LONGVARCHAR" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from notice
+    where notice_id = #{noticeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.zua.howzhi.model.Notice" >
+    insert into notice (notice_id, course_id, teacher_id, 
+      create_time, content)
+    values (#{noticeId,jdbcType=INTEGER}, #{courseId,jdbcType=INTEGER}, #{teacherId,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{content,jdbcType=LONGVARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.zua.howzhi.model.Notice" >
+    update notice
+    set course_id = #{courseId,jdbcType=INTEGER},
+      teacher_id = #{teacherId,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      content = #{content,jdbcType=LONGVARCHAR}
+    where notice_id = #{noticeId,jdbcType=INTEGER}
+  </update>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select notice_id, course_id, teacher_id, create_time, content
+    from notice
+    where notice_id = #{noticeId,jdbcType=INTEGER}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap" >
+    select notice_id, course_id, teacher_id, create_time, content
+    from notice
+  </select>
+
+  <select id="selectByCourse" resultMap="BaseResultMap" >
+    select notice_id, course_id, teacher_id, create_time, content
+    from notice
+    where course_id = #{course_id,jdbcType=INTEGER}
+  </select>
+</mapper>

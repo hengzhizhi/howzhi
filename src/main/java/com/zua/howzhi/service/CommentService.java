@@ -16,4 +16,5 @@ public interface CommentService {
    List<Comment> selectByCourse(Integer courseId);
    void delete (Integer commentId);
    Comment selectById(Integer commentId);
+   void insert(Comment comment);
 }

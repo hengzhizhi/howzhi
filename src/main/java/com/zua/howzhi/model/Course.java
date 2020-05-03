@@ -13,11 +13,15 @@ public class Course {
 
     private Date createTime;
 
-    private Integer viewCount;
+    private Integer collectCount;
+
+    private Integer admireCount;
 
     private Integer teacherId;
 
     private Integer status;
+
+    private String description;
 
     public Integer getCourseId() {
         return courseId;
@@ -37,6 +41,14 @@ public class Course {
 
     public Integer getTypeId() {
         return typeId;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public void setTypeId(Integer typeId) {
@@ -59,12 +71,20 @@ public class Course {
         this.createTime = createTime;
     }
 
-    public Integer getViewCount() {
-        return viewCount;
+    public Integer getCollectCount() {
+        return collectCount;
     }
 
-    public void setViewCount(Integer viewCount) {
-        this.viewCount = viewCount;
+    public void setCollectCount(Integer collectCount) {
+        this.collectCount = collectCount;
+    }
+
+    public Integer getAdmireCount() {
+        return admireCount;
+    }
+
+    public void setAdmireCount(Integer admireCount) {
+        this.admireCount = admireCount;
     }
 
     public Integer getTeacherId() {

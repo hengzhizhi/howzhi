@@ -21,8 +21,6 @@ public class User {
 
     private Date birthday;
 
-    private String title;
-
     private String sign;
 
     private String qq;
@@ -101,14 +99,6 @@ public class User {
 
     public void setBirthday(Date birthday) {
         this.birthday = birthday;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public String getSign() {

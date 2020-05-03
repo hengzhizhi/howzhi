@@ -8,17 +8,18 @@
     <result column="date" property="date" jdbcType="DATE" />
     <result column="parent_id" property="parentId" jdbcType="INTEGER" />
     <result column="content" property="content" jdbcType="LONGVARCHAR" />
+    <result column="catalogue_id" property="catalogueId" jdbcType="INTEGER" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
     delete from comment
     where comment_id = #{commentId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.zua.howzhi.model.Comment" >
-    insert into comment (comment_id, user_id, course_id, 
-      date, parent_id, content
+    insert into comment (comment_id, user_id, course_id,
+      date, parent_id, content, catalogue_id
       )
-    values (#{commentId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{courseId,jdbcType=INTEGER}, 
-      #{date,jdbcType=DATE}, #{parentId,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR}
+    values (#{commentId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{courseId,jdbcType=INTEGER},
+      #{date,jdbcType=DATE}, #{parentId,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR}, #{catalogueId,jdbcType=INTEGER}
       )
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.zua.howzhi.model.Comment" >
@@ -27,21 +28,21 @@
       course_id = #{courseId,jdbcType=INTEGER},
       date = #{date,jdbcType=DATE},
       parent_id = #{parentId,jdbcType=INTEGER},
-      content = #{content,jdbcType=LONGVARCHAR}
+      content = #{content,jdbcType=LONGVARCHAR},
+      catalogue_id = #{catalogueId,jdbcType=INTEGER},
     where comment_id = #{commentId,jdbcType=INTEGER}
   </update>
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
-    select comment_id, user_id, course_id, date, parent_id, content
+    select comment_id, user_id, course_id, date, parent_id, content,catalogue_id
     from comment
     where comment_id = #{commentId,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap" >
-    select comment_id, user_id, course_id, date, parent_id, content
+    select comment_id, user_id, course_id, date, parent_id, content,catalogue_id
     from comment
   </select>
-
   <select id="selectByCourse" resultMap="BaseResultMap" >
-    select comment_id, user_id, course_id, date, parent_id, content
+    select comment_id, user_id, course_id, date, parent_id, content,catalogue_id
     from comment
     where course_id = #{courseId,jdbcType=INTEGER}
   </select>

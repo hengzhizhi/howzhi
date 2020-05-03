@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.zua.howzhi.mapper.DemoMapper" >
+    <resultMap id="BaseResultMap" type="com.zua.howzhi.model.Demo" >
+        <id column="name" property="name" jdbcType="VARCHAR" />
+        <result column="name" property="name" jdbcType="VARCHAR" />
+        <result column="password" property="password" jdbcType="VARCHAR" />
+        <result column="code" property="code" jdbcType="VARCHAR" />
+        <result column="time" property="time" jdbcType="TIMESTAMP" />
+    </resultMap>
+<!--    增加-->
+    <insert id="insert" parameterType="com.zua.howzhi.model.Demo" >
+    insert into demo (name, password,code, time)
+    values (#{name,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{code,jdbcType=VARCHAR},#{time,jdbcType=TIMESTAMP})
+  </insert>
+<!--    删除-->
+    <delete id="delete" parameterType="java.lang.String" >
+    delete from demo
+    where name = #{name,jdbcType=VARCHAR}
+  </delete>
+<!--   修改-->
+    <update id="update" parameterType="com.zua.howzhi.model.Demo" >
+    update demo
+    set name = #{name,jdbcType=VARCHAR},
+      password = #{password,jdbcType=VARCHAR},
+      code = #{code,jdbcType=VARCHAR},
+      time = #{time,jdbcType=TIMESTAMP}
+    where name = #{name,jdbcType=VARCHAR}
+  </update>
+<!--    查询-->
+    <select id="selectByName" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select name, password, code,
+     time
+    from demo
+    where name = #{name,jdbcType=VARCHAR}
+  </select>
+<!--    查询全部-->
+    <select id="selectAll" resultMap="BaseResultMap" >
+    select name, password, code,
+     time
+    from demo
+  </select>
+</mapper>

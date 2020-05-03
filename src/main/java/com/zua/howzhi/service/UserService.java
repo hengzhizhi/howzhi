@@ -2,6 +2,8 @@ package com.zua.howzhi.service;
 
 import com.zua.howzhi.model.User;
 
+import java.util.List;
+
 
 /**
  * @Description
@@ -18,5 +20,7 @@ public interface UserService {
     User geById(Integer id);
 
     void add(User user);
+
+    List<User> selectAll();
 
 }

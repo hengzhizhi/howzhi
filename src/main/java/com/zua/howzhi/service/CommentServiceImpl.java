@@ -16,20 +16,25 @@ import java.util.List;
 public class CommentServiceImpl implements CommentService
 {
     @Autowired
-    CommentMapper mapper;
+    CommentMapper commentMapper;
 
     @Override
     public List<Comment> selectByCourse(Integer courseId) {
-        return mapper.selectByCourse(courseId);
+        return commentMapper.selectByCourse(courseId);
     }
 
     @Override
     public void delete(Integer commentId) {
-mapper.deleteByPrimaryKey(commentId);
+        commentMapper.deleteByPrimaryKey(commentId);
     }
 
     @Override
     public Comment selectById(Integer commentId) {
-        return mapper.selectByPrimaryKey(commentId);
+        return commentMapper.selectByPrimaryKey(commentId);
+    }
+
+    @Override
+    public void insert(Comment comment) {
+        commentMapper.insert(comment);
     }
 }

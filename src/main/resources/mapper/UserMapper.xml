@@ -11,7 +11,6 @@
     <result column="mobile" property="mobile" jdbcType="VARCHAR" />
     <result column="status" property="status" jdbcType="BIT" />
     <result column="birthday" property="birthday" jdbcType="DATE" />
-    <result column="title" property="title" jdbcType="VARCHAR" />
     <result column="sign" property="sign" jdbcType="VARCHAR" />
     <result column="qq" property="qq" jdbcType="VARCHAR" />
     <result column="login_time" property="loginTime" jdbcType="TIMESTAMP" />
@@ -25,12 +24,12 @@
     insert into user (id, realname, username, 
       password, gender, header, 
       mobile, status, birthday, 
-      title, sign, qq, login_time, 
+      sign, qq, login_time,
       create_time)
     values (#{id,jdbcType=INTEGER}, #{realname,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
       #{password,jdbcType=VARCHAR}, #{gender,jdbcType=BIT}, #{header,jdbcType=VARCHAR}, 
       #{mobile,jdbcType=VARCHAR}, #{status,jdbcType=BIT}, #{birthday,jdbcType=DATE}, 
-      #{title,jdbcType=VARCHAR}, #{sign,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, #{loginTime,jdbcType=TIMESTAMP}, 
+       #{sign,jdbcType=VARCHAR}, #{qq,jdbcType=VARCHAR}, #{loginTime,jdbcType=TIMESTAMP},
       #{createTime,jdbcType=TIMESTAMP})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.zua.howzhi.model.User" >
@@ -43,7 +42,6 @@
       mobile = #{mobile,jdbcType=VARCHAR},
       status = #{status,jdbcType=BIT},
       birthday = #{birthday,jdbcType=DATE},
-      title = #{title,jdbcType=VARCHAR},
       sign = #{sign,jdbcType=VARCHAR},
       qq = #{qq,jdbcType=VARCHAR},
       login_time = #{loginTime,jdbcType=TIMESTAMP},
@@ -53,20 +51,20 @@
 
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select id, realname, username, password, gender, header, mobile, status, birthday, 
-    title, sign, qq, login_time, create_time
+    sign, qq, login_time, create_time
     from user
     where id = #{id,jdbcType=INTEGER}
   </select>
 
   <select id="selectAll" resultMap="BaseResultMap" >
     select id, realname, username, password, gender, header, mobile, status, birthday, 
-    title, sign, qq, login_time, create_time
+    sign, qq, login_time, create_time
     from user
   </select>
 
   <select id="selectByUserName" resultMap="BaseResultMap" parameterType="java.lang.String" >
     select id, realname, username, password, gender, header, mobile, status, birthday,
-    title, sign, qq, login_time, create_time
+    sign, qq, login_time, create_time
     from user
     where username = #{username,jdbcType=VARCHAR}
   </select>

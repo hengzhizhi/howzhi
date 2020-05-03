@@ -5,6 +5,8 @@ import com.zua.howzhi.model.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 /**
  * @Description  用户Service
  * @Author Hengzhi
@@ -38,6 +40,11 @@ public class UserServiceImpl implements UserService{
 
     @Override
     public void add(User user) {
+        userMapper.insert(user);
+    }
 
+    @Override
+    public List<User> selectAll() {
+        return userMapper.selectAll();
     }
 }
