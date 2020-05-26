@@ -72,20 +72,18 @@ public class UserController {
     @CrossOrigin
     @RequestMapping("/register")
     @ResponseBody
-    public String regist(@RequestBody User user) {
+    public String regist(@RequestBody User user, HttpSession session) {
+        String result = null;
+        String code = user.getQq();
+        if (code == session.getAttribute("code")) {
+            userService.add(user);
+            result = "success";
+        } else {
+            result = "注册失败";
+        }
         log.info(user.toString());
-//        String code;
-//        String phone=user.getMobile();
-//        String str = "0123456789";
-//        StringBuilder sb = new StringBuilder(6);
-//        for (int i = 0; i < 6; i++) {
-//            char ch = str.charAt(new Random().nextInt(str.length()));
-//            sb.append(ch);
-//        }
-//        code = sb.toString();
-//        String result = SMSUtil.sendSMS("18638575521", code);
-        userService.add(user);
-        return "success";
+        return result;
+
     }
 
     @CrossOrigin
@@ -126,12 +124,15 @@ public class UserController {
     public void logout(HttpSession session) {
         session.removeAttribute("user");
     }
-//短信验证
 
+    //短信验证
+    @CrossOrigin
     @RequestMapping("/send")
     @ResponseBody
-    public String sendCode(String phone, HttpSession session) {
+    public String sendCode(@RequestBody User user, HttpSession session) {
+        String result = null;
         String str = "0123456789";
+        User uu = new User();
         StringBuilder sb = new StringBuilder(6);
         for (int i = 0; i < 6; i++) {
             char ch = str.charAt(new Random().nextInt(str.length()));
@@ -139,24 +140,28 @@ public class UserController {
         }
         String code = sb.toString();
         session.setAttribute("code", code);
-        String result = SMSUtil.sendSMS(phone, code);
-        return result;
-    }
-
-
-    @RequestMapping("/code")
-    @ResponseBody
-    public String code(String phone, String code) {
-        String str = "0123456789";
-        StringBuilder sb = new StringBuilder(6);
-        for (int i = 0; i < 6; i++) {
-            char ch = str.charAt(new Random().nextInt(str.length()));
-            sb.append(ch);
+        String phone = user.getMobile();
+        if (userService.getByMobile(phone) == null) {
+            result = SMSUtil.sendSMS(phone, code);
+        } else {
+            result = "该号码已注册,验证码发送失败";
         }
-        code = sb.toString();
-        String result = SMSUtil.sendSMS("18638575521", code);
         return result;
     }
+//
+//    @RequestMapping("/code")
+//    @ResponseBody
+//    public String code(String phone, String code) {
+//        String str = "0123456789";
+//        StringBuilder sb = new StringBuilder(6);
+//        for (int i = 0; i < 6; i++) {
+//            char ch = str.charAt(new Random().nextInt(str.length()));
+//            sb.append(ch);
+//        }
+//        code = sb.toString();
+//        String result = SMSUtil.sendSMS("18638575521", code);
+//        return result;
+//    }
 
     @ResponseBody
     @RequestMapping("/selectAll")

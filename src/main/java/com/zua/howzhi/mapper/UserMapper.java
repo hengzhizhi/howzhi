@@ -16,6 +16,7 @@ public interface UserMapper {
 
     User selectByUserName(String username);
 
+    User selectByMobile(String mobile);
 //    User login(String username);
 
     List<User> selectAll();

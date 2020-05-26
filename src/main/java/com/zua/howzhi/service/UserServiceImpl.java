@@ -32,11 +32,15 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
+    public User getByMobile(String mobile) {
+        return userMapper.selectByMobile(mobile);
+    }
+
+    @Override
     public User geById(Integer id) {
         User user=userMapper.selectByPrimaryKey(id);
         return user;
     }
-
 
     @Override
     public void add(User user) {

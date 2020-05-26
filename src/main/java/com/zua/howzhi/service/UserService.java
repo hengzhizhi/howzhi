@@ -17,6 +17,8 @@ public interface UserService {
 
     User getByName(String username);
 
+    User getByMobile(String mobile);
+
     User geById(Integer id);
 
     void add(User user);
