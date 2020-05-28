@@ -5,7 +5,7 @@
     <id column="comment_id" property="commentId" jdbcType="INTEGER" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="course_id" property="courseId" jdbcType="INTEGER" />
-    <result column="date" property="date" jdbcType="DATE" />
+    <result column="date" property="date" jdbcType="TIMESTAMP" />
     <result column="parent_id" property="parentId" jdbcType="INTEGER" />
     <result column="content" property="content" jdbcType="LONGVARCHAR" />
     <result column="catalogue_id" property="catalogueId" jdbcType="INTEGER" />
@@ -19,14 +19,14 @@
       date, parent_id, content, catalogue_id
       )
     values (#{commentId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{courseId,jdbcType=INTEGER},
-      #{date,jdbcType=DATE}, #{parentId,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR}, #{catalogueId,jdbcType=INTEGER}
+      #{date,jdbcType=TIMESTAMP}, #{parentId,jdbcType=INTEGER}, #{content,jdbcType=LONGVARCHAR}, #{catalogueId,jdbcType=INTEGER}
       )
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.zua.howzhi.model.Comment" >
     update comment
     set user_id = #{userId,jdbcType=INTEGER},
       course_id = #{courseId,jdbcType=INTEGER},
-      date = #{date,jdbcType=DATE},
+      date = #{date,jdbcType=TIMESTAMP},
       parent_id = #{parentId,jdbcType=INTEGER},
       content = #{content,jdbcType=LONGVARCHAR},
       catalogue_id = #{catalogueId,jdbcType=INTEGER},

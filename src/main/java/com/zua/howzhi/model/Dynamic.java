@@ -1,7 +1,5 @@
 package com.zua.howzhi.model;
 
-import java.util.Date;
-
 public class Dynamic {
     private Integer dynamicId;
 
@@ -9,7 +7,7 @@ public class Dynamic {
 
     private String title;
 
-    private Date createTime;
+    private String createTime;
 
     private String content;
 
@@ -37,11 +35,11 @@ public class Dynamic {
         this.title = title;
     }
 
-    public Date getCreateTime() {
+    public String getCreateTime() {
         return createTime;
     }
 
-    public void setCreateTime(Date createTime) {
+    public void setCreateTime(String createTime) {
         this.createTime = createTime;
     }
 

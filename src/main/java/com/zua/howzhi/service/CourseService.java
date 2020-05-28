@@ -13,7 +13,7 @@ import java.util.List;
  */
 public interface CourseService {
     //查询课程种类
-    List<Category> selectAllCategory( );
+    List<Category> selectAllCategory();
 
     //根据id获取课程
     Course getById(Integer courseId);
@@ -22,5 +22,9 @@ public interface CourseService {
     List<Course> queryList();
 
     //根据删除课程
-    void deleteById (Integer id);
+    void deleteById(Integer id);
+
+    List<Course> queryRecommend();
+
+    List<Course> queryByKind(Integer id);
 }

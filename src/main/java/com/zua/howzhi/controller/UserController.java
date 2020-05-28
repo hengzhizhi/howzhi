@@ -10,6 +10,7 @@ import com.zua.howzhi.service.CollectionService;
 import com.zua.howzhi.service.CourseService;
 import com.zua.howzhi.service.UserService;
 import com.zua.howzhi.util.qcloudsms.SMSUtil;
+import jdk.nashorn.internal.runtime.Undefined;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -75,11 +76,13 @@ public class UserController {
     public String regist(@RequestBody User user, HttpSession session) {
         String result = null;
         String code = user.getQq();
-        if (code == session.getAttribute("code")) {
+        String co = (String) session.getAttribute("code");
+        user.setHeader("static/img/head.jpg");
+        if (code.equals(co)) {
             userService.add(user);
-            result = "success";
+            result = "注册成功请进行登录";
         } else {
-            result = "注册失败";
+            result = "验证码校验错误，注册失败";
         }
         log.info(user.toString());
         return result;
@@ -148,21 +151,7 @@ public class UserController {
         }
         return result;
     }
-//
-//    @RequestMapping("/code")
-//    @ResponseBody
-//    public String code(String phone, String code) {
-//        String str = "0123456789";
-//        StringBuilder sb = new StringBuilder(6);
-//        for (int i = 0; i < 6; i++) {
-//            char ch = str.charAt(new Random().nextInt(str.length()));
-//            sb.append(ch);
-//        }
-//        code = sb.toString();
-//        String result = SMSUtil.sendSMS("18638575521", code);
-//        return result;
-//    }
-
+    @CrossOrigin
     @ResponseBody
     @RequestMapping("/selectAll")
     public List<User> selectAll() {
@@ -186,17 +175,19 @@ public class UserController {
 
     @CrossOrigin
     @ResponseBody
-    @RequestMapping("/getcollection")
+    @RequestMapping("/getCollection")
     public List<Course> getcollection(HttpSession session) {
-        Integer userId = ((User) session.getAttribute("user")).getId();
-        List<Collection> collections = collectionService.selectByUser(userId);
-        List<Course> courses = new ArrayList();
-        for (int i = 0; i < collections.size(); i++) {
-            Course course = courseService.getById(collections.get(i).getCourseId());
-            courses.add(course);
+        if(session.getAttribute("user") == null ){
+            return null;
+        }else {
+            Integer userId = ((User) session.getAttribute("user")).getId();
+            List<Collection> collections = collectionService.selectByUser(userId);
+            List<Course> courses = new ArrayList();
+            for (int i = 0; i < collections.size(); i++) {
+                Course course = courseService.getById(collections.get(i).getCourseId());
+                courses.add(course);
+            }
+            return courses;
         }
-        return courses;
-
-
     }
 }

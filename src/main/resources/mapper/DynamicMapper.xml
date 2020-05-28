@@ -35,4 +35,9 @@
     select dynamic_id, user_id, title, create_time, content
     from dynamic
   </select>
+
+  <select id="selectByUser" resultMap="BaseResultMap" >
+    select dynamic_id, user_id, title, create_time, content
+    from dynamic where user_id = #{userId,jdbcType=INTEGER}
+  </select>
 </mapper>

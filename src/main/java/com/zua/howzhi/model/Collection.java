@@ -8,9 +8,18 @@ public class Collection {
     private Integer courseId;
 
     private Integer videoId;
+    private Integer categoryId;
 
     public Integer getCollectionId() {
         return collectionId;
+    }
+
+    public Integer getCategoryId() {
+        return categoryId;
+    }
+
+    public void setCategoryId(Integer categoryId) {
+        this.categoryId = categoryId;
     }
 
     public void setCollectionId(Integer collectionId) {

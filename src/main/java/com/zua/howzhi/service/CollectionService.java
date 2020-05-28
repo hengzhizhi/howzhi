@@ -14,4 +14,6 @@ public interface CollectionService {
     List<Collection> selectAll();
     Integer insert(Collection collection);
     List<Collection> selectByUser(Integer userId);
+    List <Collection> selectCategory( Integer userId);
+
 }

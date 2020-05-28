@@ -25,4 +25,6 @@ public interface CollectionMapper {
     int queryFavCategory(Integer id);
 
     List<Collection> selectByUser(Integer userId);
+
+    List<Collection> selectCategory(Integer userId);
 }

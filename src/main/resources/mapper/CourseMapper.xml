@@ -49,4 +49,18 @@
     status,description
     from course
   </select>
+  <select id="queryRecommend" resultMap="BaseResultMap">
+    select course_id, name, type_id, photo_url, create_time, collect_count, admire_count,teacher_id,
+    status,description
+    from course
+    <if test="collect_count !=null">
+        order by ${collect_count}
+    </if>
+  </select>
+  <select id="queryByKind" resultMap="BaseResultMap" parameterType="java.lang.Integer">
+    select course_id, name, type_id, photo_url, create_time, collect_count, admire_count,teacher_id,
+    status,description
+    from course
+    where type_id = #{typeId,jdbcType=INTEGER}
+  </select>
 </mapper>

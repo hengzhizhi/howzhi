@@ -10,5 +10,12 @@ import java.util.List;
  * @Create 2020-04-22 2:50
  */
 public interface DynamicService {
+    List<Dynamic> selectByUser(Integer userId);
+
     List<Dynamic> selectAll();
+
+    void insert (Dynamic dynamic);
+
+    void  Delete (Integer dynamicId);
+
 }

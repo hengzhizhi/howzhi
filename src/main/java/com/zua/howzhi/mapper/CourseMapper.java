@@ -17,4 +17,10 @@ public interface CourseMapper {
     List<Course> selectAll();
 
     int updateByPrimaryKey(Course record);
+
+    List <Course>queryRecommend();
+
+    List<Course> queryRecommend(String s);
+
+    List<Course> queryByKind(Integer id);
 }

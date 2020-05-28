@@ -5,6 +5,7 @@
     <id column="collection_id" property="collectionId" jdbcType="INTEGER" />
     <result column="user_id" property="userId" jdbcType="INTEGER" />
     <result column="course_id" property="courseId" jdbcType="INTEGER" />
+    <result column="category_id" property="categoryId" jdbcType="INTEGER" />
     <result column="video_id" property="videoId" jdbcType="INTEGER" />
   </resultMap>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
@@ -12,15 +13,16 @@
     where collection_id = #{collectionId,jdbcType=INTEGER}
   </delete>
   <insert id="insert" parameterType="com.zua.howzhi.model.Collection" >
-    insert into collection (collection_id, user_id, course_id, 
+    insert into collection (collection_id, user_id, course_id, category_id,
       video_id)
-    values (#{collectionId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{courseId,jdbcType=INTEGER}, 
+    values (#{collectionId,jdbcType=INTEGER}, #{userId,jdbcType=INTEGER}, #{courseId,jdbcType=INTEGER},  #{categoryId,jdbcType=INTEGER},
       #{videoId,jdbcType=INTEGER})
   </insert>
   <update id="updateByPrimaryKey" parameterType="com.zua.howzhi.model.Collection" >
     update collection
     set user_id = #{userId,jdbcType=INTEGER},
       course_id = #{courseId,jdbcType=INTEGER},
+      category_id=#{categoryId,jdbcType=INTEGER},
       video_id = #{videoId,jdbcType=INTEGER}
     where collection_id = #{collectionId,jdbcType=INTEGER}
   </update>
@@ -30,12 +32,18 @@
     where collection_id = #{collectionId,jdbcType=INTEGER}
   </select>
   <select id="selectAll" resultMap="BaseResultMap" >
-    select collection_id, user_id, course_id, video_id
+    select collection_id, user_id, course_id,category_id, video_id
     from collection
   </select>
   <select id="selectByUser" resultMap="BaseResultMap" >
-    select collection_id, user_id, course_id, video_id
+    select collection_id, user_id, course_id, category_id,video_id
     from collection
     where user_id = #{userId,jdbcType=INTEGER}
   </select>
+  <select id="selectCategory" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+      select collection_id, user_id, course_id, category_id,video_id
+    from collection
+    where user_id = #{userId,jdbcType=INTEGER}
+  </select>
+
 </mapper>

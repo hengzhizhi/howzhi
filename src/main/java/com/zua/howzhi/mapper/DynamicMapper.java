@@ -15,6 +15,8 @@ public interface DynamicMapper {
 
     Dynamic selectByPrimaryKey(Integer dynamicId);
 
+    List<Dynamic> selectByUser(Integer userId);
+
     List<Dynamic> selectAll();
 
     int updateByPrimaryKey(Dynamic record);

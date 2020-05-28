@@ -41,6 +41,16 @@ public class CourseServiceImpl implements CourseService {
 
     @Override
     public void deleteById(Integer id) {
+        courseMapper.deleteByPrimaryKey(id);
+    }
 
+    @Override
+    public List<Course> queryRecommend() {
+        return courseMapper.queryRecommend(" collect_count  DESC");
+    }
+
+    @Override
+    public List<Course> queryByKind(Integer id) {
+        return courseMapper.queryByKind(id);
     }
 }

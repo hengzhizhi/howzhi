@@ -1,7 +1,5 @@
 package com.zua.howzhi.model;
 
-import java.util.Date;
-
 public class Comment {
     private Integer commentId;
 
@@ -9,7 +7,7 @@ public class Comment {
 
     private Integer courseId;
 
-    private Date date;
+    private String date;
 
     private Integer parentId;
 
@@ -41,11 +39,11 @@ public class Comment {
         this.courseId = courseId;
     }
 
-    public Date getDate() {
+    public String getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(String date) {
         this.date = date;
     }
 
@@ -64,11 +62,11 @@ public class Comment {
     public void setContent(String content) {
         this.content = content;
     }
-    public Integer getCatalogue_id() {
+    public Integer getCatalogueId() {
         return catalogueId;
     }
 
-    public void setCatalogue_id(Integer catalogueId) {
+    public void setCatalogueId(Integer catalogueId) {
         this.catalogueId = catalogueId;
     }
 
